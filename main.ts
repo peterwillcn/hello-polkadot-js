@@ -21,7 +21,9 @@ async function subscribeTemplatePallet(api: ApiPromise) {
             const { event, phase } = record;
             const types = event.typeDef;
             console.log("type: ", types);
-            if (event.section === "template" && event.method === "SomethingStored") {
+            console.log("section: ", event.section);
+            console.log("method: ", event.method);
+            if (event.section === "template" && event.method === "something") {
                 console.log(`template event method: ${event.section}.${event.method}`);
                 event.data.forEach((data, index) => {
                     console.log(`parameter ${index}: ${data.toString()} types: ${types[index].type}`);
